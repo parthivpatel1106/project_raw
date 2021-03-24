@@ -1,0 +1,72 @@
+body
+{
+    font-family: 'open sans';
+    background-color: green;
+}
+.main
+{
+    display:grid;
+    grid-template-columns: 50% 50%;
+    background-color: white;
+    margin-top: 40px;
+    width:1200px;
+    margin-left: 80px;
+    padding-bottom: 30px;
+    border-radius: 20px;
+}
+.signimg img
+{
+    height:500px;
+    width:500px;
+    margin-left: 50px;
+    margin-top: 10px;
+}
+.signupform
+{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 10px;
+    margin-top: 70px;
+}
+.btn
+{
+    background-color:white;
+    color:green;
+    outline: none;
+    border-color: green;
+    border:3px solid green;
+    border-radius: 10px;
+}
+.btn:hover
+{
+    background-color: green;
+    color:white;
+}
+.signup h3
+{
+    text-align: center;
+}
+.txt
+{
+    height: 50px;
+    width:500px;
+    text-align: center;
+    border:solid 3px green;
+    border-radius: 100px;
+    outline:none;
+}
+/* .org
+{
+    background-color: green;
+    color:white;
+    padding: 10px 20px 10px 10px;
+    border-color: green;
+    border-radius: 50rem ;
+    outline:none;
+}
+.dd
+{
+    color:white;
+} */

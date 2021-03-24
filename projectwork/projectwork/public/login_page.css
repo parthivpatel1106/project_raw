@@ -1,0 +1,79 @@
+body
+{
+    font-family: 'open sans';
+    background-color: green;
+}
+.main
+{
+    display:grid;
+    grid-template-columns: 50% 50%;
+    background-color: white;
+    margin-top: 50px;
+    margin-left: 80px;
+    width:1200px;
+    padding-bottom: 100px;
+    border-radius: 20px;
+}
+.log img
+{
+    height:300px;
+    width:300px;
+    margin-top: 120px;
+    filter: brightness(80%);
+    margin-left: 150px;
+}
+.login
+{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    align-items: center;
+    margin-right: 100px;
+    justify-content: center;
+}
+.btn-pri
+{
+    background-color:white;
+    color:green;
+    outline: none;
+    border-color: green;
+    border:3px solid green;
+    border-radius: 10px;
+}
+.btn-pri:hover
+{
+    background-color: green;
+    color:white;
+}
+.forgot
+{
+    text-align: center;
+    outline: none;
+    text-decoration: none;
+    color:black;
+}
+.forgot:hover
+{
+    text-decoration: none;
+    color:green;
+}
+.txt
+{
+    height: 50px;
+    width:500px;
+    text-align: center;
+    border:solid 3px green;
+    border-radius: 100px;
+    outline:none;
+}
+.newac
+{
+    color:black;
+    outline: none;
+}
+.newac:hover
+{
+    text-decoration: none;
+    color:green;
+}

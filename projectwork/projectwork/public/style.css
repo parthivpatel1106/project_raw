@@ -1,0 +1,196 @@
+body{
+    font-family: 'open sans';
+    overflow-x: hidden;
+}
+html
+{
+    scroll-behavior: smooth;
+}
+section
+{
+    height: 100vh;
+    width:100%;
+}
+/* .login1
+{
+    background-color: yellow;
+    margin-top: 200px;
+} */
+.homepagearea
+{
+    display:grid;
+    grid-template-columns: 50% 50%;
+}
+.right
+{
+    margin-top: 300px;
+    margin-left: 50px;
+}
+.right h1
+{
+    color:green;
+    font-weight: 700;
+}
+.right h3
+{
+    color:grey;
+}
+.left
+{
+    margin-top: 150px;
+}
+.left img
+{
+    height:400px;
+    width:700px;
+}
+.btn-pri
+{
+    margin-top: 20px;
+    border-radius: 10px;
+    border-width: 2px;
+    background-color:white;
+    outline: none;
+    text-decoration: none;
+    border-color: green;
+    font-size: 24px;
+    color: green;
+}
+.btn-pri:hover
+{
+    background-color: green;
+    border-color: green;
+    color: white;
+}
+/* .subscription1
+{
+    background-color: red;
+} */
+nav
+{
+    background-color:#E8E8E8;
+}
+.nav-item a
+{
+    color:green;
+    text-transform:uppercase;
+}
+.working
+{
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+}
+.addfiles, .processfiles, .outputfiles
+{
+    margin-top: 150px;
+    text-align: center;
+}
+.addfiles h2, .processfiles h2, .outputfiles h2
+{
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: 700;
+    color:green;
+}
+.addfiles h3, .processfiles h3, .outputfiles h3
+{
+    font-size: 18px;
+    display:block;
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.addfiles img
+{
+    height:200px;
+    width:200px;
+}
+.processfiles img
+{
+    height:200px;
+    width:300px;
+}
+.outputfiles img
+{
+    height:200px;
+    width:250px;
+}
+.contact1
+{
+    background-color: green;
+}
+.contactarea
+{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    background-color:white;
+    width:1200px;
+    margin-left: 80px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding-bottom: 50px;
+}
+.contactarea h3
+{
+    text-align: center;
+}
+.contactform
+{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    align-items: center;
+    margin-right: 100px;
+    justify-content: center;
+}
+.contactimg
+{
+    margin-top: 200px;
+    margin-left: 50px;
+}
+.contactimg img
+{
+    height: 300px;
+    width:500px;
+}
+.txt
+{
+    height: 50px;
+    width:500px;
+    text-align: center;
+    border:solid 3px green;
+    border-radius: 100px;
+    outline:none;
+}
+.txtbox
+{
+    height: 200px;
+    width:500px;
+    text-align: center;
+    border:solid 3px green;
+    border-radius: 20px;
+    outline:none;   
+}
+.btn
+{
+    background-color:white;
+    color:green;
+    outline: none;
+    border-color: green;
+    border:3px solid green;
+    border-radius: 10px;
+}
+.btn:hover
+{
+    background-color: green;
+    color:white;
+}
+.info
+{
+    display:block;
+    height:50px;
+    width:1000px;
+    margin: 0 auto;
+    color:white;
+}
