@@ -58,7 +58,7 @@ exports.login_page = async (req,res) => {
         }else{
             console.log("working");
             // console.log("val:",val);
-            res.render('user_profile',{message:"workings",items:results})
+            res.render('user_profile',{message:"working",items:results})
         }
     })
     }catch(error){
