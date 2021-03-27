@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const mysql = require("mysql");
+const jwt=require("jsonwebtoken");
 const dotenv = require('dotenv');
 const path = require("path");
 const cookieParser = require('cookie-parser');
@@ -34,25 +35,6 @@ db.connect( (error) =>{
   }
 })
 
-//app.get("/",(req,res) =>{
-//  //res.send("<h1> home</h1>")
-//  res.render("index");
-//});
-//
-//app.get("/login_page",(req,res) =>{
-//    //res.send("<h1> home</h1>")
-//    res.render("login_page");
-//});
-//
-//app.get("/forgot_pwd",(req,res) =>{
-//    //res.send("<h1> home</h1>")
-//    res.render("forgot_pwd");
-//});
-//
-//app.get("/signup_page",(req,res) =>{
-//    //res.send("<h1> home</h1>")
-//    res.render("signup_page");
-//});
 
 app.use('/',require('./routes/page'));
 app.use('/auth',require('./routes/auth'));

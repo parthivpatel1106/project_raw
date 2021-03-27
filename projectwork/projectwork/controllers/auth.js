@@ -23,6 +23,7 @@ exports.login_page = async (req,res) => {
       }
 
       db.query('SELECT * FROM users WHERE email = ?', [email],async (error,results) =>{
+        module.exports.val=results.id
           console.log(results);
          if( !results || !(await bcrypt.compare(password,results[0].password))){
              res.status(401).render('login_page',{
@@ -33,7 +34,7 @@ exports.login_page = async (req,res) => {
              const token = jwt.sign({id},process.env.JWT_SECRET, {
                  expiresIn : process.env.JWT_EXPIRES_IN
              });
-             console.log("token is"+token);
+             console.log("token is "+token);
 
              const cookieOption = {
                  expires: new Date(
@@ -42,10 +43,24 @@ exports.login_page = async (req,res) => {
                  httpOnly : true
              } 
              res.cookie('jwt',token,cookieOption);
-             res.status(200).redirect("/");
+            //  res.status(200).redirect("/user_profile");
          }
       })
-
+      db.query("SELECT *FROM users where email = ?",[email], async (error,results,fields)=>{
+        console.log("query start")
+        if(error)
+        {
+            console.log("error:",error)
+            res.send({
+                "code":400,
+                "failed":"error occured"
+            })
+        }else{
+            console.log("working");
+            // console.log("val:",val);
+            res.render('user_profile',{message:"working",items:results})
+        }
+    })
     }catch(error){
       console.log(error);
     }
@@ -62,9 +77,8 @@ exports.signup_page = (req,res) => {
     
 
     const {fname,lname,email,pwd,c_pwd} = req.body;
-  
     db.query('SELECT email FROM users WHERE email = ?', [email], async (error,results) => {
-
+        
         if(error){
             console.log(error);
         }
@@ -95,7 +109,24 @@ exports.signup_page = (req,res) => {
 
         })
     });  
-
+    
     //res.send("FORM SUBMITED");
     
 }
+exports.user_profile=(req,res)=>{
+    db.query("SELECT *FROM users",{first_name,last_name,email},(error,rows,fields)=>{
+        console.log("query start")
+        if(error)
+        {
+            console.log("error:",error)
+            res.send({
+                "code":400,
+                "failed":"error occured"
+            })
+        }else{
+            res.render('user_profile',{message:"working",items:rows})
+            return
+        }
+    })
+}
+
