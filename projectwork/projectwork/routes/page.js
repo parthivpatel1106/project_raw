@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mysql = require("mysql");
+const { logout_get } = require("../controllers/auth");
 
 const db = mysql.createConnection({
     host : process.env.DATABASE_HOST,
@@ -23,23 +24,9 @@ router.get('/login_page',(req,res) => {
 //         name:"name"
 //     });
 // })
-const val=require('./auth')
 router.get('/user_profile',(req,res)=>{
-    // db.query("SELECT *FROM users where id = ?",3, async (error,results,fields)=>{
-    //     console.log("query start")
-    //     if(error)
-    //     {
-    //         console.log("error:",error)
-    //         res.send({
-    //             "code":400,
-    //             "failed":"error occured"
-    //         })
-    //     }else{
-    //         console.log("working");
-    //         console.log("val:",val);
             res.render('user_profile')
-    //     }
-    // })
+    
 })
 router.get('/signup_page',(req,res) => {
     res.render('signup_page');
@@ -48,5 +35,11 @@ router.get('/signup_page',(req,res) => {
 router.get('/forgot_pwd',(req,res) => {
     res.render('forgot_pwd');
 })
+
+// router.get("/logout",(req,res)=>{
+//     res.cookie('jwt','',{maxAge:1});
+//     res.render('index');
+// })
+
 
 module.exports = router;

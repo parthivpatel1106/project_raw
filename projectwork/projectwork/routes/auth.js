@@ -6,6 +6,7 @@ const { userInfo } = require("os");
 router.post('/user_profile',authController.user_profile)
 router.post('/signup_page',authController.signup_page);
 router.post('/login_page',authController.login_page);
+router.get('/logout',authController.logout)
 //
 //router.get('/login_page',(req,res) => {
 //    res.render('login_page');
