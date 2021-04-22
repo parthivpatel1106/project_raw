@@ -24,18 +24,22 @@ router.get('/login_page',(req,res) => {
 //         name:"name"
 //     });
 // })
-router.get('/user_profile',(req,res)=>{
-            res.render('user_profile')
-    
-})
-router.get('/signup_page',(req,res) => {
-    res.render('signup_page');
-})
+// router.get('/signup_page',(req,res) => {
+//     res.render('signup_page');
+// })
 
 router.get('/forgot_pwd',(req,res) => {
     res.render('forgot_pwd');
 })
-
+router.get('/edit_profile',(req,res)=>{
+    res.render('edit_profile')
+})
+router.get('/home_page',(req,res)=>{
+    res.render('home_page')
+})
+// router.get('/home_page',(req,res)=>{
+//     res.render('home_page')
+// })
 // router.get("/logout",(req,res)=>{
 //     res.cookie('jwt','',{maxAge:1});
 //     res.render('index');

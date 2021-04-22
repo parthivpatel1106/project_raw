@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/home_page.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <title>home</title>
+</head>
+<body>
+    <div class="main">
+        <nav class="navbar navbar-expand-sm fixed-top">
+            <a href="#" class="navbar-brand">Brand name</a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                      <a href="/home_page" class="nav-link">Home</a>  
+                    </li>
+                    <li class="nav-item">
+                        {{!-- <a href="/user_profile" class="nav-link">Profile</a> --}}
+                        <form action="/auth/user_profile1" method="POST">
+                            <button type="submit" class="nav-link">Profile</button>
+                        </form>
+                      </li>
+                      <li class="nav-item">
+                        <a href="/" class="nav-link">Log out</a>  
+                      </li>
+                </ul>
+            </div>  
+        </nav>
+        <div class="workarea">
+            <h3>Upload your files</h3>
+            <p>Upload your spreadsheet files like .csv, .xlsx, .xls here!</p>
+         <form action="/auth/home_page" onsubmit="required()" name="excel" method="POST" class="uploadform">
+            <input type="file" name="excelsheet" id="excel" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="upload-btn">
+            <input type="submit" value="Upload" class="btn">
+         </form>
+            {{!-- <p>Still confuse how it works <a href="/#how">click here for more info</a> </p> --}}
+        </div>
+    </div>
+    <script src="/exceltojason.js"></script>
+</body>
+</html>

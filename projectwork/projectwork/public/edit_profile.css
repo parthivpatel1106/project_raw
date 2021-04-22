@@ -1,0 +1,98 @@
+body{
+    background-color: white;
+    font-family: 'open sans';
+}
+nav
+{
+    background-color:#E8E8E8;
+}
+.nav-item a
+{
+    color:green;
+    text-transform:uppercase;
+}
+.nav-link
+{
+    color:green;
+    border-width: 0px;
+    text-transform: uppercase;
+    background: transparent;
+}
+.card
+{
+    display:block;
+    margin: 0 auto;
+    background-color: #E8E8E8;
+    margin-top: 100px;
+    height:500px;
+    width:1200px;
+    border-radius: 20px;
+    filter: drop-shadow(1px 1px 5px black);
+}
+.card h3
+{
+    margin-top: 10px;
+    color:green;
+}
+.card h4
+{
+    text-align: center;
+    font-size: 18px;
+}
+.alert
+{
+    display:block;
+    margin: 0 auto;
+    width:300px;
+}
+.txt
+{
+    height: 50px;
+    width:500px;
+    text-align: center;
+    border:solid 3px green;
+    border-radius: 100px;
+    outline:none;
+}
+.edit form
+{
+    margin-top: 50px;
+    display:flex;
+    flex-direction: column;
+    row-gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+#pro_img
+{
+    color:green;   
+}
+.upload-btn::-webkit-file-upload-button
+{
+
+    color:green;
+    border:3px solid green;
+    border-radius: 20px;
+    outline:none;
+    padding:4px 10px 4px 10px;
+}
+.upload-btn::-webkit-file-upload-button:hover
+{
+    color:white;
+    background-color: green;
+    outline:none;
+}
+.btn
+{
+    background-color:white;
+    color:green;
+    outline: none;
+    border-color: green;
+    border:3px solid green;
+    border-radius: 10px;
+}
+.btn:hover
+{
+    background-color: green;
+    color:white;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/edit_profile.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <title>Edit Profile</title>
+</head>
+<body>
+    <div class="main">
+        <nav class="navbar navbar-expand-sm fixed-top">
+            <a href="#" class="navbar-brand">Brand name</a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                      <a href="/auth/home_page" class="nav-link">Home</a>  
+                    </li>
+                    <li class="nav-item">
+                         <form action="/auth/user_profile1" method="POST">
+                            <button type="submit" class="nav-link">Profile</button>
+                        </form>  
+                      </li>
+                      <li class="nav-item">
+                        <a href="/" class="nav-link">Log out</a>  
+                      </li>
+                </ul>
+            </div>  
+        </nav>
+    </div>
+    <div class="workarea">
+        <div class="card">
+            <h3 class="font-weight-bold text-center">Edit Your Profile</h3>
+            <div class="edit">
+            <form action="/auth/edit_profile" onsubmit="required()" name="editform" method="POST">
+                <input type="file" name="proimg" id="pro_img" accept="image/*" class="upload-btn">
+                <input type="text" class="txt" placeholder="Company Name" onfocus="this.placeholder=''" onblur="this.placeholder='Company Name'" id = "comp_name" name = "compname">
+                <input type="text" class="txt" placeholder="Company Address" onfocus="this.placeholder=''" onblur="this.placeholder='Company Address'" id = "comp_add" name = "compadd" >
+                <input type="text" class="txt" placeholder="City" onfocus="this.placeholder=''" onblur="this.placeholder='City'" id = "city_name" name = "cityname" >
+                <input type="text" class="txt" placeholder="Website" onfocus="this.placeholder=''" onblur="this.placeholder='Website'" id = "web" name = "web_site" >
+                <input type="submit" value="Update" class="btn">
+            </form>
+            {{#if message}}
+                <h4 class="alert alert-danger mt-4">{{message}}</h4>
+            {{/if}}
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="/routes/page.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+    <script src="/req_text.js"></script>
+</body>
+</html>

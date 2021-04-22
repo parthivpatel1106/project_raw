@@ -1,7 +1,8 @@
 const mysql = require("mysql");
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-
+const excelToJson = require('convert-excel-to-json');
+var bodyParser = require('body-parser');
 
 
 const db = mysql.createConnection({
@@ -14,6 +15,7 @@ const db = mysql.createConnection({
 
 exports.login_page = async (req,res) => {
     try{
+        
        const {email,password} = req.body;
        if(!email || !password){
           return res.status(400).render('login_page',{
@@ -46,26 +48,41 @@ exports.login_page = async (req,res) => {
             //  res.status(200).redirect("/user_profile");
          }
       })
-      db.query("SELECT *FROM users where email = ?",[email], async (error,results,fields)=>{
-        console.log("query start")
-        if(error)
-        {
-            console.log("error:",error)
-            res.send({
-                "code":400,
-                "failed":"error occured"
-            })
-        }else{
-            console.log("working");
-            // console.log("val:",val);
-            res.render('user_profile',{message:"working",items:results})
-        }
-    })
+    //   db.query("SELECT *FROM users where email = ?",[email], async (error,results,fields)=>{
+    //     console.log("query start")
+    //     if(error)
+    //     {
+    //         console.log("error:",error)
+    //         res.send({
+    //             "code":400,
+    //             "failed":"error occured"
+    //         })
+    //     }else{
+    //         console.log("working");
+    //         // console.log("val:",val);
+
+    //         res.render('user_profile',{message:"working",items:results})
+    //     }
+    // })
     }catch(error){
       console.log(error);
     }
 }
-
+exports.edit_profile=(req,res)=>{
+    console.log(req.body)
+    const{proimg,compname,compadd,cityname,web_site}=req.body;
+    db.query('INSERT INTO user_data SET?', {city:cityname,company_address:compadd,company_name:compname,website:web_site,profile_picture:proimg},(error,results)=>{
+        if(error){
+            console.log(error);
+        }else{
+          console.log(results);
+          return res.render('edit_profile',{
+            message : 'your data is updated'
+        }); 
+        }
+    });
+    
+}
 exports.signup_page = (req,res) => {
     console.log(req.body);
 
@@ -114,7 +131,26 @@ exports.signup_page = (req,res) => {
     
 }
 exports.user_profile=(req,res)=>{
-    db.query("SELECT *FROM users",{first_name,last_name,email},(error,rows,fields)=>{
+    const{email}=req.body;
+    global.useremail=email;
+    db.query("SELECT *FROM users where email = ?",[email], async (error,results,fields)=>{
+        console.log("query start")
+        console.log(useremail)
+        if(error)
+        {
+            console.log("error:",error)
+            res.send({
+                "code":400,
+                "failed":"error occured"
+            })
+        }else{
+            res.render('user_profile',{items:results})
+            return
+        }
+    })
+}
+exports.user_profile1=(req,res)=>{
+    db.query("SELECT *FROM users where email = ?",[useremail], async (error,results,fields)=>{
         console.log("query start")
         if(error)
         {
@@ -124,10 +160,22 @@ exports.user_profile=(req,res)=>{
                 "failed":"error occured"
             })
         }else{
-            res.render('user_profile',{message:"working",items:rows})
+            res.render('user_profile',{items:results})
             return
         }
     })
+}
+exports.home_page=(req,res)=>{
+    console.log("homepage working")
+    return res.render('home_page');
+    // const {excelsheet}=req.body 
+    // const fs = require('fs');
+    // const result = excelToJson({
+    //     source: fs.readFileSync() // fs.readFileSync return a Buffer
+    // });
+
+    // //fs.writeFileSync('output.json', JSON.stringify(result));
+    // //console.log(result);    
 }
 module.exports.logout=(req,res)=>{
     res.cookie('jwt','',{maxAge:1});
