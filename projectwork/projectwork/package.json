@@ -18,9 +18,13 @@
     "dotenv": "^8.2.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "filereader": "^0.10.3",
     "hbs": "^4.1.1",
+    "jsdom": "^16.5.3",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "request": "^2.88.2",
+    "xlsx": "^0.16.9"
   }
 }

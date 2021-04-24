@@ -3,8 +3,13 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const excelToJson = require('convert-excel-to-json');
 var bodyParser = require('body-parser');
-
-
+const XLSX =require('XLSX');
+var FileReader = require('filereader')
+var fs=require('fs');
+// var request=require('request')
+// const sf =require('../public/exceltojason');
+// const jsdom = require("jsdom");
+// const { JSDOM } = jsdom;
 const db = mysql.createConnection({
     host : process.env.DATABASE_HOST,
     user : process.env.DATABASE_USER,
@@ -71,7 +76,7 @@ exports.login_page = async (req,res) => {
 exports.edit_profile=(req,res)=>{
     console.log(req.body)
     const{proimg,compname,compadd,cityname,web_site}=req.body;
-    db.query('INSERT INTO user_data SET?', {city:cityname,company_address:compadd,company_name:compname,website:web_site,profile_picture:proimg},(error,results)=>{
+    db.query('INSERT INTO user_data SET?', {city:cityname,email:useremail,company_address:compadd,company_name:compname,website:web_site,profile_picture:proimg},(error,results)=>{
         if(error){
             console.log(error);
         }else{
@@ -165,18 +170,31 @@ exports.user_profile1=(req,res)=>{
         }
     })
 }
-exports.home_page=(req,res)=>{
-    console.log("homepage working")
-    return res.render('home_page');
-    // const {excelsheet}=req.body 
-    // const fs = require('fs');
-    // const result = excelToJson({
-    //     source: fs.readFileSync() // fs.readFileSync return a Buffer
-    // });
-
-    // //fs.writeFileSync('output.json', JSON.stringify(result));
-    // //console.log(result);    
+exports.edit_profile1=(req,res)=>{
+    db.query("SELECT *FROM user_data where email=?"[useremail],async(error,outputs,fields)=>{
+        console.log("start")
+        if(error)
+        {
+            console.log("error:",error)
+            res.send({
+                "code":400,
+                "failed":"error occured"
+            })
+        }else{
+            res.render('user_profile',{dataitem:outputs})
+        }
+    })
 }
+exports.home_page=(req,res)=>{
+    console.log("homepage working");
+    return res.render('home_page');
+}
+// exports.predict=(req,res)=>{
+//     url = 'https://sentimentanlysisprediction.herokuapp.com//'
+//     data = {"comment":"hello how are you are bad"}
+//     response = requests.post(url, json.dumps(data))
+//     print(response.json())  
+// }
 module.exports.logout=(req,res)=>{
     res.cookie('jwt','',{maxAge:1});
     res.redirect("/index");

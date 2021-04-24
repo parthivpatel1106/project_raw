@@ -1,10 +1,23 @@
-const excelToJson = require('convert-excel-to-json');
-const fs = require('fs');
-const f=r
-const result = excelToJson({
-    source: fs.readFileSync('') // fs.readFileSync return a Buffer
-});
+let selectfile;
+console.log(window.XLSX);
+document.getElementById("input").addEventListener("change",(event)=>{
+    selectfile=event.target.files[0];
+})
 
-fs.writeFileSync('output.json', JSON.stringify(result));
-console.log(result);
-// result will be an Object containing keys with the same name as the sheets found on the excel file. Each of the keys will have an array of objects where each of them represents a row of the container sheet. e.g. for a excel file that has two sheets ('sheet1', 'sheet2')
+document.getElementById("button").addEventListener("click",()=>{
+    if(selectfile){
+        let fileReader=new FileReader();
+        fileReader.readAsBinaryString(selectfile);
+        fileReader.onload=(event)=>{
+            console.log(event.target.result);
+            let data =event.target.result;
+            let workbook = XLSX.read(data,{type:"binary"});
+            console.log(workbook);
+            workbook.SheetNames.forEach(sheet=>{
+                let rowObject= XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheet]);
+                console.log(rowObject); 
+                document.getElementById("jsondata").innerHTML=JSON.stringify(rowObject,undefined,4);
+            })
+        }
+    }
+})

@@ -24,9 +24,9 @@ router.get('/login_page',(req,res) => {
 //         name:"name"
 //     });
 // })
-// router.get('/signup_page',(req,res) => {
-//     res.render('signup_page');
-// })
+router.get('/signup_page',(req,res) => {
+    res.render('signup_page');
+})
 
 router.get('/forgot_pwd',(req,res) => {
     res.render('forgot_pwd');

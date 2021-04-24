@@ -4,8 +4,8 @@ const mysql = require("mysql");
 const jwt=require("jsonwebtoken");
 const dotenv = require('dotenv');
 const path = require("path");
+var request=require("request");
 const cookieParser = require('cookie-parser');
-
 dotenv.config({path : './.env'});
 
 const db = mysql.createConnection({
@@ -38,6 +38,23 @@ db.connect( (error) =>{
 
 app.use('/',require('./routes/page'));
 app.use('/auth',require('./routes/auth'));
+// app.get('/main',function(req,res){
+//     request('http://127.0.0.1:5500/flask',function(error,response,body){
+//         console.error('error:',error)
+//         console.log('statusCode:',response&&response.statusCode);
+//         console.log('body:',body);
+//         res.send(body)
+//     })
+//    // res.render('index');
+// })
+// app.post('/predict',function(req,res){
+//     request('http://127.0.0.1:5500/predict',function(error,response,body){
+//         console.error('error:',error)
+//         console.log('statusCode:',response&&response.statusCode);
+//         console.log('body:',body);
+//         res.send(body)
+//     })
+// })
 
 app.listen(5000, () =>{
     console.log("server started on port 5000");

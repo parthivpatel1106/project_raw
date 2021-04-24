@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
     <title>home</title>
 </head>
 <body>
@@ -38,12 +39,20 @@
         <div class="workarea">
             <h3>Upload your files</h3>
             <p>Upload your spreadsheet files like .csv, .xlsx, .xls here!</p>
-         <form action="/auth/home_page" onsubmit="required()" name="excel" method="POST" class="uploadform">
-            <input type="file" name="excelsheet" id="excel" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="upload-btn">
-            <input type="submit" value="Upload" class="btn">
-         </form>
+        <div class="uploadform">
+            <input type="file" name="excelsheet" id="input" accept=".xls, .xlsx"class="upload-btn">
+            {{!-- <input type="text" class="txt" name="Comment"> --}}
+            <input type="submit" value="Upload" class="btn" id="button">
+         </div>
+         <div class="col-md-12">
+             <pre id="jsondata"></pre>
+         </div>
             {{!-- <p>Still confuse how it works <a href="/#how">click here for more info</a> </p> --}}
         </div>
+        {{!-- <div class="prediction">
+            {{ prediction_text }}
+
+          </div> --}}
     </div>
     <script src="/exceltojason.js"></script>
 </body>

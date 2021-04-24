@@ -20,12 +20,12 @@
         <div class="signupform">
 
             <h3 class="font-weight-bold">Create account</h3>
-            <form action="/auth/signup_page" method="POST">
-            <input type="text" class="txt" placeholder="First Name" onfocus="this.placeholder=''" onblur="this.placeholder='First name'" id = "f_name" name = "fname" >
-            <input type="text" class="txt" placeholder="Last Name" onfocus="this.placeholder=''" onblur="this.placeholder='Last name'" id = "l_name" name = "lname"  >
-            <input type="text" class="txt" placeholder="Email" onfocus="this.placeholder=''" onblur="this.placeholder='Email'" id = "email" name = "email" >
-            <input type="text" class="txt" placeholder="Password" onfocus="this.placeholder=''" onblur="this.placeholder='Password'" id = "pwd" name = "pwd" >
-            <input type="text" class="txt" placeholder="Confirm Password" onfocus="this.placeholder=''" onblur="this.placeholder='Confirm Password'" id = "c_pwd" name = "c_pwd" >
+            <form action="/auth/signup_page" method="POST" class="signform">
+            <input type="text" class="txt" placeholder="First Name" onfocus="this.placeholder=''" onblur="this.placeholder='First name'" id = "f_name" name = "fname" required>
+            <input type="text" class="txt" placeholder="Last Name" onfocus="this.placeholder=''" onblur="this.placeholder='Last name'" id = "l_name" name = "lname"  required>
+            <input type="text" class="txt" placeholder="Email" onfocus="this.placeholder=''" onblur="this.placeholder='Email'" id = "email" name = "email" required>
+            <input type="password" class="txt" placeholder="Password" onfocus="this.placeholder=''" onblur="this.placeholder='Password'" id = "pwd" name = "pwd" required>
+            <input type="password" class="txt" placeholder="Confirm Password" onfocus="this.placeholder=''" onblur="this.placeholder='Confirm Password'" id = "c_pwd" name = "c_pwd" required>
             <!-- <label for:"org">
                 <select class="org" id="organization" name="organization">
                     <option value="company" class="dd">Company</option>
