@@ -6,6 +6,17 @@ var bodyParser = require('body-parser');
 const XLSX =require('XLSX');
 var FileReader = require('filereader')
 var fs=require('fs');
+var path = require('path');
+const fetch = require("node-fetch")
+var multer = require('multer');
+const readline = require("linebyline");
+var d3=require("d3")
+// var JSDOM = require('jsdom').JSDOM;
+// // Create instance of JSDOM.
+// var jsdom = new JSDOM('<body><div id="container"></div></body>', {runScripts: 'dangerously'});
+// // Get window
+// var window = jsdom.window;
+// writeStream=fs.createWriteStream('output8.txt')
 // var request=require('request')
 // const sf =require('../public/exceltojason');
 // const jsdom = require("jsdom");
@@ -17,10 +28,9 @@ const db = mysql.createConnection({
     database : process.env.DATABASE
 
 });
-
 exports.login_page = async (req,res) => {
     try{
-        
+
        const {email,password} = req.body;
        if(!email || !password){
           return res.status(400).render('login_page',{
@@ -48,9 +58,9 @@ exports.login_page = async (req,res) => {
                      Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
                  ),
                  httpOnly : true
-             } 
+             }
              res.cookie('jwt',token,cookieOption);
-            //  res.status(200).redirect("/user_profile");
+            //res.status(200).redirect("/user_profile");
          }
       })
     //   db.query("SELECT *FROM users where email = ?",[email], async (error,results,fields)=>{
@@ -83,10 +93,10 @@ exports.edit_profile=(req,res)=>{
           console.log(results);
           return res.render('edit_profile',{
             message : 'your data is updated'
-        }); 
+        });
         }
     });
-    
+
 }
 exports.signup_page = (req,res) => {
     console.log(req.body);
@@ -96,11 +106,11 @@ exports.signup_page = (req,res) => {
     //const email = req.body.email;
     //const pwd = req.body.pwd;
     //const cpwd = req.body.c_pwd;
-    
+
 
     const {fname,lname,email,pwd,c_pwd} = req.body;
     db.query('SELECT email FROM users WHERE email = ?', [email], async (error,results) => {
-        
+
         if(error){
             console.log(error);
         }
@@ -108,7 +118,7 @@ exports.signup_page = (req,res) => {
         if(results.length > 0){
             return res.render('signup_page',{
                 message : 'email has been already used'
-            })  
+            })
         }else if(pwd !== c_pwd ){
             return res.render('signup_page',{
                 message : 'password do not match'
@@ -118,7 +128,7 @@ exports.signup_page = (req,res) => {
         let hashedPassword = await  bcrypt.hash(pwd, 8);
         console.log(hashedPassword);
        // res.send("testing");
- 
+
         db.query('INSERT INTO users SET ?', {first_name : fname,last_name : lname, email : email,password : hashedPassword}, (error,results) =>{
           if(error){
               console.log(error);
@@ -126,14 +136,14 @@ exports.signup_page = (req,res) => {
             console.log(results);
             return res.render('signup_page',{
                 message : 'you have been registered successfully'
-            }); 
+            });
           }
 
         })
-    });  
-    
+    });
+
     //res.send("FORM SUBMITED");
-    
+
 }
 exports.user_profile=(req,res)=>{
     const{email}=req.body;
@@ -189,12 +199,112 @@ exports.home_page=(req,res)=>{
     console.log("homepage working");
     return res.render('home_page');
 }
-// exports.predict=(req,res)=>{
-//     url = 'https://sentimentanlysisprediction.herokuapp.com//'
-//     data = {"comment":"hello how are you are bad"}
-//     response = requests.post(url, json.dumps(data))
-//     print(response.json())  
+
+//api call starts
+var myFile=require('../app')
+var myMap={}
+var myList=[]
+// var tempList=[]
+// var myData={
+//     0:"nice",
+//     1:"cool",
+//     2:"hey"
 // }
+exports.predict=(req,res)=>{
+    writeStream=fs.createWriteStream('output14.txt')
+    //const {file1} = req.file;
+     //const xlsxFile = require('read-excel-file/node');
+     console.log("filename:",myFile.myFile)
+     const table = XLSX.readFile(`./uploads/${myFile.myFile}`);
+    const sheet = table.Sheets[table.SheetNames[0]];
+    var range = XLSX.utils.decode_range(sheet['!ref']);
+    for (let rowNum = range.s.r; rowNum <= range.e.r; rowNum++) {
+    // Example: Get second cell in each row, i.e. Column "B"
+    const secondCell = sheet[XLSX.utils.encode_cell({r: rowNum, c: 0})];
+    // NOTE: secondCell is undefined if it does not exist (i.e. if its empty)
+    //console.log(secondCell.v);
+ // secondCell.v contains the value, i.e. string or number
+                myList.push(secondCell.v)
+                myMap.new_key1 = secondCell.v;
+       //console.log(myMap)
+        fetch('https://sentimentanlysisprediction.herokuapp.com//', {
+        method: 'POST',
+        body: JSON.stringify({
+        "comment":myMap
+        }),
+        headers: {
+            'Content-type': 'application/json;'
+        }
+    }).then(function (response) {
+            if (response.ok) {
+                return response.json()
+            }
+            return Promise.reject(response);
+        }).then(function (data) {
+            //console.log(data);
+             for(let j in data){
+                writeStream.write(j + ":" + JSON.stringify(data[j]) + "\r\n");
+                myList.push(data[j]) 
+                
+            }
+            if(rowNum==range.e.r)
+            {
+                var myDataRange= myList.slice(10,myList.length)
+                console.log(myDataRange)
+                return res.render('analysis',{
+                    message1:JSON.stringify(myDataRange)
+                })
+            }
+        })
+        .catch(function (error) {
+            console.warn('Something went wrong.', error);
+        });
+    }//forloop
+   
+   
+}
+
+//api call ends
+// exports.temp=(req,res)=>{
+//     var fs = require('fs');
+
+//         fileBuffer =  fs.readFileSync("./output12.txt");
+//         to_string = fileBuffer.toString();
+//         split_lines = to_string.split("\n");
+//         var numOfLines=(split_lines.length-1)/2;
+//         console.log(numOfLines)
+
+//         var readMe = fs.readFileSync('./modified4.txt', 'utf8').split('\n');
+//         let countp= 0;
+
+//         for(let i = 0; i < readMe.length;i++){
+//             if(readMe[i] == 'sentiment:"Postive"'){
+//                 countp++;
+//             }
+//         }
+
+//         console.log(countp);
+//         let countn=numOfLines-countp
+//         console.log(countn)
+//         module.exports.poscount=countp;
+//         res.render('temp',{
+//             message2:countp
+//         })
+
+        
+            
+//     //chart
+// }
+
+module.exports.upload=(req,res)=>{
+    console.log('here1')
+
+      var upload1 = multer({ storage: storage })
+
+}
+
+
+
 module.exports.logout=(req,res)=>{
     res.cookie('jwt','',{maxAge:1});
     res.redirect("/index");

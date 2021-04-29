@@ -17,7 +17,10 @@ document.getElementById("button").addEventListener("click",()=>{
                 let rowObject= XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheet]);
                 console.log(rowObject); 
                 document.getElementById("jsondata").innerHTML=JSON.stringify(rowObject,undefined,4);
+                var blob= new Blob([JSON.stringify(rowObject)],{type:'application/javascript;charset=utf-8'});
+                saveAs(blob,"testfile1.json")
             })
+            
         }
     }
 })

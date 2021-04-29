@@ -1,0 +1,3 @@
+2:sentiment:"Negative"
+8:sentiment:"Negative"
+14:sentiment:"Negative"

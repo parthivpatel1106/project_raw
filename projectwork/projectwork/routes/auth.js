@@ -10,7 +10,9 @@ router.post('/signup_page',authController.signup_page);
 router.post('/login_page',authController.login_page);
 router.post('/edit_profile',authController.edit_profile);
 router.get('/logout',authController.logout)
-// router.post('/predict',authController.predict)
+router.post('/predict',authController.predict)
+router.post('/fileupload',authController.upload)
+//router.post('/temp',authController.temp)
 //router.post('/home',authController.home);
 //
 //router.get('/login_page',(req,res) => {

@@ -15,6 +15,7 @@ router.get('/',(req,res) => {
     res.render('index');
 })
 
+
 router.get('/login_page',(req,res) => {
     res.render('login_page');
 })
@@ -34,8 +35,11 @@ router.get('/forgot_pwd',(req,res) => {
 router.get('/edit_profile',(req,res)=>{
     res.render('edit_profile')
 })
-router.get('/home_page',(req,res)=>{
-    res.render('home_page')
+router.get('/analysis',(req,res)=>{
+    res.render('analysis')
+})
+router.get('/user_home',(req,res)=>{
+    res.render('user_home')
 })
 // router.get('/home_page',(req,res)=>{
 //     res.render('home_page')
@@ -45,5 +49,8 @@ router.get('/home_page',(req,res)=>{
 //     res.render('index');
 // })
 
+// router.get('/temp',(req,res)=>{
+//     res.render('temp')
+// })
 
 module.exports = router;

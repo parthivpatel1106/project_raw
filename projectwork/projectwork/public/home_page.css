@@ -14,6 +14,14 @@ nav
     text-transform: uppercase;
     background: transparent;
 }
+.heading
+{
+    margin-top: 80px;
+    color:green;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-align: center;
+}
 .workarea
 {
     display:flex;
@@ -23,7 +31,7 @@ nav
     row-gap: 10px;
     border: 1px green dashed;
     padding:20px 50px 20px 50px;
-    margin: 100px 150px;
+    margin: 10px 150px;
     background-color: #E8E8E8;
 }
 .workarea h3

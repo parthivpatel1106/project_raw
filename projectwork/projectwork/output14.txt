@@ -1,0 +1,60 @@
+new_key1:{"comment":"World","sentiment":"Postive"}
+new_key1:{"comment":"Hello","sentiment":"Negative"}
+new_key1:{"comment":"Winners","sentiment":"Postive"}
+new_key1:{"comment":"Winners","sentiment":"Postive"}
+new_key1:{"comment":"Excellent","sentiment":"Postive"}
+new_key1:{"comment":"So good","sentiment":"Postive"}
+new_key1:{"comment":"Winners","sentiment":"Postive"}
+new_key1:{"comment":"Bad idea","sentiment":"Negative"}
+new_key1:{"comment":"Nice ","sentiment":"Postive"}
+new_key1:{"comment":"good game","sentiment":"Postive"}
+new_key1:{"comment":"Not good","sentiment":"Postive"}
+new_key1:{"comment":"So good","sentiment":"Postive"}
+new_key1:{"comment":"Worst","sentiment":"Negative"}
+new_key1:{"comment":"Bad idea","sentiment":"Negative"}
+new_key1:{"comment":"Not good","sentiment":"Postive"}
+new_key1:{"comment":"Not good","sentiment":"Postive"}
+new_key1:{"comment":"Worst","sentiment":"Negative"}
+new_key1:{"comment":"good game","sentiment":"Postive"}
+new_key1:{"comment":"Hello","sentiment":"Negative"}
+new_key1:{"comment":"World","sentiment":"Postive"}
+new_key1:{"comment":"Bad idea","sentiment":"Negative"}
+new_key1:{"comment":"World","sentiment":"Postive"}
+new_key1:{"comment":"Worst","sentiment":"Negative"}
+new_key1:{"comment":"Worst","sentiment":"Negative"}
+new_key1:{"comment":"So good","sentiment":"Postive"}
+new_key1:{"comment":"Not good","sentiment":"Postive"}
+new_key1:{"comment":"good game","sentiment":"Postive"}
+new_key1:{"comment":"Nice ","sentiment":"Postive"}
+new_key1:{"comment":"World","sentiment":"Postive"}
+new_key1:{"comment":"Hello","sentiment":"Negative"}
+new_key1:{"comment":"Hello","sentiment":"Negative"}
+new_key1:{"comment":"Worst","sentiment":"Negative"}
+new_key1:{"comment":"Excellent","sentiment":"Postive"}
+new_key1:{"comment":"Hello","sentiment":"Negative"}
+new_key1:{"comment":"Nice ","sentiment":"Postive"}
+new_key1:{"comment":"Excellent","sentiment":"Postive"}
+new_key1:{"comment":"World","sentiment":"Postive"}
+new_key1:{"comment":"Bad idea","sentiment":"Negative"}
+new_key1:{"comment":"Worst","sentiment":"Negative"}
+new_key1:{"comment":"good game","sentiment":"Postive"}
+new_key1:{"comment":"Bad idea","sentiment":"Negative"}
+new_key1:{"comment":"good game","sentiment":"Postive"}
+new_key1:{"comment":"Bad idea","sentiment":"Negative"}
+new_key1:{"comment":"So good","sentiment":"Postive"}
+new_key1:{"comment":"Not good","sentiment":"Postive"}
+new_key1:{"comment":"So good","sentiment":"Postive"}
+new_key1:{"comment":"Hello","sentiment":"Negative"}
+new_key1:{"comment":"Not good","sentiment":"Postive"}
+new_key1:{"comment":"Excellent","sentiment":"Postive"}
+new_key1:{"comment":"Excellent","sentiment":"Postive"}
+new_key1:{"comment":"Winners","sentiment":"Postive"}
+new_key1:{"comment":"So good","sentiment":"Postive"}
+new_key1:{"comment":"Winners","sentiment":"Postive"}
+new_key1:{"comment":"Nice ","sentiment":"Postive"}
+new_key1:{"comment":"Winners","sentiment":"Postive"}
+new_key1:{"comment":"good game","sentiment":"Postive"}
+new_key1:{"comment":"World","sentiment":"Postive"}
+new_key1:{"comment":"Excellent","sentiment":"Postive"}
+new_key1:{"comment":"Nice ","sentiment":"Postive"}
+new_key1:{"comment":"Nice ","sentiment":"Postive"}
