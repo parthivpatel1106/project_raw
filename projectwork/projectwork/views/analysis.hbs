@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/home_page.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <title>home</title>
+</head>
+<body>
+    <div class="main">
+        <nav class="navbar navbar-expand-sm fixed-top">
+            <a href="#" class="navbar-brand">Brand name</a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                      <a href="/analysis" class="nav-link">Home</a>  
+                    </li>
+                    <li class="nav-item">
+                        {{!-- <a href="/user_profile" class="nav-link">Profile</a> --}}
+                        <form action="/auth/user_profile1" method="POST">
+                            <button type="submit" class="nav-link">Profile</button>
+                        </form>
+                      </li>
+                      <li class="nav-item">
+                        <a href="/" class="nav-link">Log out</a>  
+                      </li>
+                </ul>
+            </div>  
+        </nav>
+        <h2 class="heading">Analysis Tool</h2>
+        <div class="workarea">
+            <h3>Upload your files</h3>
+            <p>Upload your spreadsheet files like .csv, .xlsx, .xls here!</p>
+            {{!-- <div class="uploadform"> --}}
+        <form action="/single" enctype="multipart/form-data" class="uploadform" method="POST">
+            <input type="file" name="file1"  id="input" accept=".xls, .xlsx" class="upload-btn">
+            {{!-- <input type="text" class="txt" name="comments"> --}}
+            <input type="submit" value="Upload" class="btn" id="button">
+        </form>
+        {{!-- </div> --}}
+         <div class="col-md-12">
+             <pre id="jsondata"></pre>
+         </div>
+         <div class="col-md-12">
+             {{#if message}}
+                <h4 class='text-center'>{{message}}</h4>
+                <form action="/auth/predict" method="POST" class="nextstep">
+                    <input type="submit" value="Next" class='btn' id="button">
+                </form>
+               
+             {{/if}}
+         </div>
+          
+         <div class="col-md-12">
+             {{#if message1}}
+                <h4 class='text-center'>{{message1}}</h4><br>
+                <form action="/auth/temp" method="POST" class="nextstep">
+                    <input type="submit" value="View Stats" class='btn' id="button">
+                </form>
+             {{/if}}
+         </div>
+            {{!-- <p>Still confuse how it works <a href="/#how">click here for more info</a> </p> --}}
+        </div>
+        {{!-- <div class="prediction">
+            {{ prediction_text }}
+
+          </div> --}}
+    </div>
+    {{!-- <script src="/exceltojason.js"></script> --}}
+</body>
+</html>

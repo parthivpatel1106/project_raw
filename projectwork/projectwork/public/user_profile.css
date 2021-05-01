@@ -1,0 +1,147 @@
+body{
+    font-family:'open sans';
+    overflow-y: hidden;
+}
+html
+{
+    scroll-behavior: smooth;
+}
+nav
+{
+    background-color:#E8E8E8;
+}
+.nav-item a
+{
+    color:green;
+    text-transform:uppercase;
+}
+.userprofile
+{
+    display:grid;
+    grid-template-columns: 20% 80%;
+    height:100%;
+}
+.sidebar
+{
+    position: fixed;
+    height: 100%;
+    width:20%;                                  
+}
+.rightbar
+{
+    position: absolute; 
+    margin-left: 20%;
+    height:100%;
+    width:80%;
+    padding-top: 100px;
+}
+.profile-icon img
+{
+    height:150px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 100px;
+    background-color: green;
+    border-radius: 10px;
+}
+.profile-icon h4
+{
+    font-weight: 700;
+    margin-top: 15px;
+    text-align: center;
+}
+.profile-icon p
+{
+    text-align: center;
+    font-size: 14px;
+    color:gray;
+}
+.sideli
+{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.side-link
+{
+    list-style: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-left: 20px;
+}
+.side-link a
+{
+    text-decoration: none;
+    color: black;
+}
+.side-link a:hover
+{
+    color:green;
+}
+section
+{
+    /* padding-top: 100px; */
+    height:100vh;
+    width:100%;
+}
+
+.bio-data
+{
+    display:block;
+    height:400px;
+    width:1050px;
+    background-color: #e8e8e8;
+    /* margin-top: 100px; */
+    border-radius: 20px;
+    filter: drop-shadow(1px 1px 5px black);
+}
+.bio-data h3
+{
+    color:green;
+    font-weight: 700;
+    text-align: center;
+}
+
+.userdata
+{
+    margin-left: 20px;
+    margin-top: 50px;
+}
+.data
+{
+    font-size: 18px;
+    padding : 0px 50px 10px 0px;
+}
+.data1
+{
+    text-transform: uppercase;
+    font-weight: 700;
+    padding : 0px 50px 10px 0px;
+}
+.userhistory
+{
+    display:block;
+    height:500px;
+    width:1050px;
+    background-color: #e8e8e8;
+    /* margin-top: 100px; */
+    border-radius: 20px;
+    filter: drop-shadow(1px 1px 5px black);
+}
+#history
+{
+    padding-top:100px;
+}
+.userhistory h3
+{
+    color:green;
+    font-weight: 700;
+    text-align: center;
+}
+.heading
+{
+   display:block;
+   height:300px;
+   width:300px;
+   background-color:green;
+}

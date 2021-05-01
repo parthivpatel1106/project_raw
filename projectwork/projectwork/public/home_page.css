@@ -1,0 +1,85 @@
+nav
+{
+    background-color:#E8E8E8;
+}
+.nav-item a
+{
+    color:green;
+    text-transform:uppercase;
+}
+.nav-link
+{
+    color:green;
+    border-width: 0px;
+    text-transform: uppercase;
+    background: transparent;
+}
+.heading
+{
+    margin-top: 80px;
+    color:green;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-align: center;
+}
+.workarea
+{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 10px;
+    border: 1px green dashed;
+    padding:20px 50px 20px 50px;
+    margin: 10px 150px;
+    background-color: #E8E8E8;
+}
+.workarea h3
+{
+    color:green;
+}
+.workarea p
+{
+    color:green;
+}
+.workarea p a
+{
+    color:green;
+}
+.uploadform
+{
+    display:flex;
+    flex-direction: column;
+    row-gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+.upload-btn::-webkit-file-upload-button
+{
+
+    color:green;
+    border:3px solid green;
+    border-radius: 20px;
+    outline:none;
+    padding:4px 10px 4px 10px;
+}
+.upload-btn::-webkit-file-upload-button:hover
+{
+    color:white;
+    background-color: green;
+    outline:none;
+}
+.btn
+{
+    background-color:white;
+    color:green;
+    outline: none;
+    border-color: green;
+    border:3px solid green;
+    border-radius: 10px;
+}
+.btn:hover
+{
+    background-color: green;
+    color:white;
+}

@@ -18,8 +18,10 @@
         </div>
         <div class="forgotpwd">
             <h3 class="font-weight-bold">Forgot Password</h3>
-            <input type="email" placeholder="your Email" class="txt" onfocus="this.placeholder=''" onblur="this.placeholder='Enter your Email'">
-            <a href="#" class="btn" id="btns" onclick="myFunction()">Submit</a>
+            <form action="" method="POST">
+            <input name="email" type="email" placeholder="your Email" class="txt" onfocus="this.placeholder=''" onblur="this.placeholder='Enter your Email'">
+            <input type="submit" value="submit" class="btn">
+            </form>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

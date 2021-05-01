@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stats.css" type="text/css">
+    <link rel="stylesheet" href="/home_page.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <title>Your stats</title>
+</head>
+<body>
+    <div class="header">
+    <nav class="navbar navbar-expand-sm fixed-top">
+            <a href="#" class="navbar-brand">Brand name</a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                      <a href="/analysis" class="nav-link">Analysis Tool</a>  
+                    </li>
+                    <li class="nav-item">
+                        {{!-- <a href="/user_profile" class="nav-link">Profile</a> --}}
+                        <form action="/auth/user_profile1" method="POST">
+                            <button type="submit" class="nav-link">Profile</button>
+                        </form>
+                      </li>
+                      <li class="nav-item">
+                        <a href="/" class="nav-link">Log out</a>  
+                      </li>
+                </ul>
+            </div>  
+        </nav>
+    </div>
+    <div class="chartcard">
+    <h3 class="text-center text-white text-uppercase">Your Analysis Report</h3>
+    <div class="report">
+        <div class="stats">
+            <div class="titlecard"><h3 class="text-center">The analysis report of your file</h3></div>
+            <div class="emotioncard">
+            <div class="positive">
+                <h5>Positive Trust</h5>
+                <h5 class="text-success font-weight-bold">{{postru}}%</h5>
+                <h5>Positive Joy</h5>
+                <h5 class="text-success font-weight-bold">{{posjoy}}%</h5>
+                <h5>Positive Surprise</h5>
+                <h5 class="text-success font-weight-bold">{{possur}}%</h5>
+            </div>
+            <div class="negative">
+                <h5>Negative Anger</h5>
+                <h5 class="text-danger font-weight-bold">{{negang}}%</h5>
+                <h5>Negative Fear</h5>
+                <h5 class="text-danger font-weight-bold">{{negfea}}%</h5> 
+                <h5>Negative Sadness</h5>
+                <h5 class="text-danger font-weight-bold">{{negsad}}%</h5>  
+            </div>
+            <div class="nuetral">
+                <h5>Nuetral</h5>
+                <h5 class="font-weight-bold">{{nuetral}}%</h5> 
+                <h5>Satire</h5>
+                <h5 class="font-weight-bold">{{satire}}%</h5> 
+            </div>
+        </div>
+        <div class="download">
+            <form action="/download" method="GET">
+                <input type="submit" value="Download full output" class="dbtn">
+            </form>
+        </div>
+        </div>
+        <div class="chartcontainer">
+            <div class="inline-svg">
+                {{{svgTemplate}}}
+            </div>
+            <div class="labels"><img src="/svg/labels1.PNG" alt=""></div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

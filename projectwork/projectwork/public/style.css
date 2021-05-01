@@ -194,3 +194,57 @@ nav
     margin: 0 auto;
     color:white;
 }
+.card
+{
+    display:grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+}
+.varient1, .varient2, .varient3
+{
+    height:350px;
+    width: 350px;
+    margin-top: 150px;
+    margin-left: 50px;
+}
+.lite,.pro,.max
+{
+    height:400px;
+    width: 300px;
+    border-radius: 10px;
+    background-color:#E8E8E8;
+    margin: 0 auto;
+}
+.lite img,.pro img,.max img
+{
+    height: 150px;
+    width:300px;
+    display:block;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+.lite h4,.pro h4,.max h4
+{
+    text-transform: uppercase;
+    font-weight: 700;
+    color: green;
+    text-align: center;
+    margin-top: 20px;
+}
+.varient1 .btn, .varient2 .btn, .varient3 .btn
+{
+    margin-left:120px;
+}
+.nav-item a
+{
+    color:green;
+    text-transform:uppercase;
+    outline: none;
+}
+.nav-link
+{
+    color:green;
+    border-width: 0px;
+    text-transform: uppercase;
+    background: transparent;
+    outline: none;
+}

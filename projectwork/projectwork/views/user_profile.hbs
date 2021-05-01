@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/user_profile.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <title>User Profile</title>
+</head>
+<body>
+    <div class="main">
+        <nav class="navbar navbar-expand-sm fixed-top">
+            <a href="#" class="navbar-brand">Brand name</a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                       <a href="/user_home" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#bio" class="nav-link">Profile</a>
+                        {{!-- <form action="/auth/user_profile" method="GET">
+                            <button type="submit" class="nav-link">Profile</button>
+                        </form> --}}
+                      </li>
+                      <li class="nav-item">
+                        <a href="/" class="nav-link">Log out</a>  
+                      </li>
+                </ul>
+            </div>  
+        </nav>
+    </div>
+    <div class="userprofile">
+        <div class="sidebar">
+            <div class="profile-icon">
+                <img src="/svg/male_avatar.svg" alt="">
+                {{#each items as |item|}}
+                <h4>{{item.first_name}} {{item.last_name}}</h4>
+                {{/each}}
+                <p>Wayne Corporation</p>
+                <ul class="sideli">
+                    <li class="side-link"><a href="#bio">About</a></li>
+                    <li class="side-link"><a href="/analysis">Analysis Tool</a></li>
+                    <li class="side-link"><a href="/edit_profile">Add more to Profile</a></li>
+                    <li class="side-link"><a href="#history">History</a></li>
+                    <li class="side-link"><a href="#setting">Setting</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="rightbar" id="bio">
+           <section >
+               <div class="bio-data">
+                   
+                   <h3>Your Profile</h3>
+                   <table class="userdata">
+                      {{#each items as |item|}}
+                       <tr>
+                           <td class="data1">Name:</td>
+                            <td class="data">{{item.first_name}} {{item.last_name}}</td>
+                       </tr>
+                       
+                       <tr>
+                            <td class="data1">Email:</td>
+                            <td class="data">{{item.email}}</td>
+                        </tr>
+                        <tr>
+                            <td class="data1">City:</td>
+                            <td class="data">Gotham</td>
+                        </tr>
+                        <tr>
+                            <td class="data1">Company name:</td>
+                            <td class="data">Wayne Corporation</td>
+                        </tr>
+                        <tr>
+                            <td class="data1">Company address:</td>
+                            <td class="data">123, Knight city, Park view, Gotham-123456</td>
+                        </tr>
+                        <tr>
+                            <td class="data1">Site:</td>
+                            <td class="data">  <a href="">www.waynecorporation.com</a> </td>
+                        </tr>
+                        {{/each}}
+                   </table>
+            </div>
+           </section>
+           <section id="history">
+               <div class="userhistory">
+                <h3>History</h3>
+               </div>
+           </section>
+           <section id="setting"></section>
+        </div>
+        
+    </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="/routes/page.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+</body>
+</html>
