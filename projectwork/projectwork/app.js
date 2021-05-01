@@ -155,7 +155,11 @@ var storage = multer.diskStorage({
   //     return next();
   //   } 
   // })
-
+app.get('/download', function(req, res){
+  const file = "./output_main.txt";
+  res.download(file); // Set disposition and send it.
+});
+  
 app.listen(5000, () =>{
     console.log("server started on port 5000");
 })

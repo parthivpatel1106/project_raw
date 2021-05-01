@@ -61,12 +61,13 @@
                
              {{/if}}
          </div>
-          {{!-- <form action="/auth/temp" method="POST" class="nextstep">
-                    <input type="submit" value="Next1" class='btn' id="button">
-                </form> --}}
+          
          <div class="col-md-12">
              {{#if message1}}
-                {{message1}}
+                <h4 class='text-center'>{{message1}}</h4><br>
+                <form action="/auth/temp" method="POST" class="nextstep">
+                    <input type="submit" value="View Stats" class='btn' id="button">
+                </form>
              {{/if}}
          </div>
             {{!-- <p>Still confuse how it works <a href="/#how">click here for more info</a> </p> --}}

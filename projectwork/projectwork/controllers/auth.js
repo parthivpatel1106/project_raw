@@ -11,6 +11,8 @@ const fetch = require("node-fetch")
 var multer = require('multer');
 const readline = require("linebyline");
 var d3=require("d3")
+const jsdom = require("jsdom");
+const JSDOM = jsdom.JSDOM;
 // var JSDOM = require('jsdom').JSDOM;
 // // Create instance of JSDOM.
 // var jsdom = new JSDOM('<body><div id="container"></div></body>', {runScripts: 'dangerously'});
@@ -211,7 +213,7 @@ var myList=[]
 //     2:"hey"
 // }
 exports.predict=(req,res)=>{
-    writeStream=fs.createWriteStream('output14.txt')
+    writeStream=fs.createWriteStream('output_main.txt')
     //const {file1} = req.file;
      //const xlsxFile = require('read-excel-file/node');
      console.log("filename:",myFile.myFile)
@@ -227,7 +229,7 @@ exports.predict=(req,res)=>{
                 myList.push(secondCell.v)
                 myMap.new_key1 = secondCell.v;
        //console.log(myMap)
-        fetch('https://sentimentanlysisprediction.herokuapp.com//', {
+        fetch('https://emotionalanalysishinditext.herokuapp.com//', {
         method: 'POST',
         body: JSON.stringify({
         "comment":myMap
@@ -241,18 +243,22 @@ exports.predict=(req,res)=>{
             }
             return Promise.reject(response);
         }).then(function (data) {
-            //console.log(data);
+            console.log(data);
              for(let j in data){
-                writeStream.write(j + ":" + JSON.stringify(data[j]) + "\r\n");
-                myList.push(data[j]) 
-                
+                myList.push(data[j])
+                for(let k in data[j])
+                {
+                    writeStream.write(k + ":" + JSON.stringify(data[j][k]) + "\r\n");
+                     
+                }
             }
             if(rowNum==range.e.r)
             {
-                var myDataRange= myList.slice(10,myList.length)
-                console.log(myDataRange)
+                //console.log(range.e.r)
+                var myDataRange= myList.slice(rowNum+1,myList.length)
+               // console.log(myDataRange)
                 return res.render('analysis',{
-                    message1:JSON.stringify(myDataRange)
+                    message1: "Your analysis stats are ready"
                 })
             }
         })
@@ -265,36 +271,154 @@ exports.predict=(req,res)=>{
 }
 
 //api call ends
-// exports.temp=(req,res)=>{
-//     var fs = require('fs');
+exports.temp=(req,res)=>{
+    //var fs = require('fs');
+        let positiveTrust=0
+        let positiveJoy=0
+        let positiveSurprise=0
+        let negativeAnger=0
+        let negativeFear=0
+        let negativeSadness=0
+        let nuetral=0
+        let satire=0
+        fileBuffer =  fs.readFileSync("./output_main.txt");
+        to_string = fileBuffer.toString();
+        split_lines = to_string.split("\r\n");
+        //console.log(split_lines)
+        for(let i = 0; i < split_lines.length;i++){
+            if(split_lines[i] == "Emotion:\"Positive-Trust\""){
+                //console.log("here")
+                positiveTrust++;
+            }
+            else if(split_lines[i] == "Emotion:\"Positive-Joy\"")
+            {
+                positiveJoy++;
+            }
+            else if(split_lines[i] == "Emotion:\"Positive-Surprise\"")
+            {
+                positiveSurprise++;
+            }
+            else if(split_lines[i] == "Emotion:\"Negative-Anger\"")
+            {
+                negativeAnger++
+            }
+            else if(split_lines[i] == "Emotion:\"Negative-fear\"")
+            {
+                negativeFear++
+            }
+            else if(split_lines[i] == "Emotion:\"Negative-sadness\"")
+            {
+                negativeSadness++
+            }
+            else if(split_lines[i] == "Emotion:\"Negative-Anger\"")
+            {
+                negativeAnger++
+            }
+            else if(split_lines[i] == "Emotion:\"Nuetral\"")
+            {
+                nuetral++
+            }
+            else if(split_lines[i] == "Emotion:\"Satire\"")
+            {
+                satire++
+            }
 
-//         fileBuffer =  fs.readFileSync("./output12.txt");
-//         to_string = fileBuffer.toString();
-//         split_lines = to_string.split("\n");
-//         var numOfLines=(split_lines.length-1)/2;
-//         console.log(numOfLines)
+        }
+        var numOfLines=(split_lines.length-1)/2;
+        console.log(numOfLines)
 
-//         var readMe = fs.readFileSync('./modified4.txt', 'utf8').split('\n');
-//         let countp= 0;
+        // var readMe = fs.readFileSync('./output_main.txt', 'utf8').split('\n');
+        // let countp= 0;
+        // for(let i = 0; i < readMe.length;i++){
+        //     if(readMe[i] == "sentiment:\"Postive\""){
+        //         countp++;
+        //     }
+        // }
 
-//         for(let i = 0; i < readMe.length;i++){
-//             if(readMe[i] == 'sentiment:"Postive"'){
-//                 countp++;
-//             }
-//         }
-
-//         console.log(countp);
-//         let countn=numOfLines-countp
-//         console.log(countn)
-//         module.exports.poscount=countp;
-//         res.render('temp',{
-//             message2:countp
-//         })
+        // console.log(countp);
+        // var pospercent=((countp/numOfLines)*100).toFixed(2)
+        // let countn=numOfLines-countp
+        // console.log(countn)
+        // var negpercent=((countn/numOfLines)*100).toFixed(2)
+        
+        console.log("trust:",positiveTrust)
+        console.log("joy:",positiveJoy)
+        console.log("surprise:",positiveSurprise)
+        console.log("anger:",negativeAnger)
+        console.log("fear:",negativeFear)
+        console.log("sad:",negativeSadness)
+        console.log("nuetral:",nuetral)
+        console.log("satire:",satire)
+        var trustPercent=((positiveTrust/numOfLines)*100).toFixed(2)
+        var joyPercent=((positiveJoy/numOfLines)*100).toFixed(2)
+        var surprisePercent=((positiveSurprise/numOfLines)*100).toFixed(2)
+        var angerPercent=((negativeAnger/numOfLines)*100).toFixed(2)
+        var fearPercent=((negativeFear/numOfLines)*100).toFixed(2)
+        var sadnessPercent=((negativeSadness/numOfLines)*100).toFixed(2)
+        var nuetralPercent=((nuetral/numOfLines)*100).toFixed(2)
+        var satirePercent=((satire/numOfLines)*100).toFixed(2)
+        //chart
+        const chartWidth = 500;
+        const chartHeight = 500;
+        
+        const arc = d3.arc()
+          .outerRadius(chartWidth / 2 - 10)
+          .innerRadius(0);
+        
+        const colours = ["#9ede73", "#be0000", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00","#763e9e"];
+        function go(
+          pieData = [trustPercent,joyPercent,surprisePercent,angerPercent,fearPercent,sadnessPercent,nuetralPercent,satirePercent],
+          outputLocation = path.join('./test.svg')
+        ) {
+          const dom = new JSDOM("");
+        
+          dom.window.d3 = d3.select(dom.window.document); //get d3 into the dom
+        
+          //do yr normal d3 stuff
+          const svg = dom.window.d3.select('body')
+            .append('div').attr('class', 'container') //make a container div to ease the saving process
+            .append('svg')
+            .attr("xmlns", 'http://www.w3.org/2000/svg')
+            .attr("width", chartWidth)
+            .attr("height", chartHeight)
+            .append('g')
+            .attr('transform', 'translate(' + chartWidth / 2 + ',' + chartWidth / 2 + ')');
+        
+          svg.selectAll('.arc')
+            .data(d3.pie()(pieData))
+            .enter()
+            .append('path')
+            .attr("class", 'arc')
+            .attr("d", arc)
+            .attr("fill", (d, i) => colours[i])
+            .attr("stroke", '#000000')
+        
+          //using sync to keep the code simple
+          fs.writeFileSync(outputLocation, dom.window.d3.select('.container').html())
+        }
+        
+        go()
+        //chart
+       // module.exports.poscount=countp;
+       var svgTemplate= fs.readFileSync('./test.svg', 'utf8');
+        res.render('temp',{
+            svgTemplate:svgTemplate,
+            //poscount:pospercent, 
+            //negcount:negpercent
+            postru: trustPercent,
+            posjoy: joyPercent,
+            possur: surprisePercent,
+            negang: angerPercent,
+            negfea: fearPercent,
+            negsad: sadnessPercent,
+            nuetral: nuetralPercent,
+            satire: satirePercent
+        })
 
         
             
-//     //chart
-// }
+    //chart
+}
 
 module.exports.upload=(req,res)=>{
     console.log('here1')
